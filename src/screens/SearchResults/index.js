@@ -1,13 +1,17 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import HomeMap from '../../components/HomeMap';
+import {View, Dimensions} from 'react-native';
+import RouteMap from '../../components/RouteMap';
 import RideTypes from '../../components/RideTypes';
 
 const SearchResults = () => {
   return (
-    <View>
-      <HomeMap />
-      <RideTypes />
+    <View style={{display: 'flex', justifyContent: 'space-between'}}>
+      <View style={{height: Dimensions.get('window').height - 400}}>
+        <RouteMap />
+      </View>
+      <View style={{height: 400}}>
+        <RideTypes />
+      </View>
     </View>
   );
 };

@@ -1,9 +1,22 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
+import MapViewDirections from 'react-native-maps-directions';
 import cars from '../../assets/data/cars';
 
-const HomeMap = () => {
+const GOOGLE_MAPS_APIKEY = 'AIzaSyDPYjiwIUr-We5AOJGdiwHPZ8t5ht0rOEY';
+
+const RouteMap = () => {
+  const origin = {
+    latitude: 28.450627,
+    longitude: -16.263045,
+  };
+
+  const destination = {
+    latitude: 28.460127,
+    longitude: -16.269045,
+  };
+
   const getImage = type => {
     if (type === 'RideX') {
       return require('../../assets/images/top-RideX.png');
@@ -24,16 +37,15 @@ const HomeMap = () => {
         latitudeDelta: 0.0222,
         longitudeDelta: 0.0121,
       }}>
-      {cars.map(car => (
-        <Marker
-          key={car.id}
-          coordinate={{latitude: car.latitude, longitude: car.longitude}}>
-          <Image
-            style={{width: 70, height: 70, resizeMode: 'contain'}}
-            source={getImage(car.type)}
-          />
-        </Marker>
-      ))}
+      <MapViewDirections
+        origin={origin}
+        destination={destination}
+        apikey={GOOGLE_MAPS_APIKEY}
+        strokeWidth={4}
+        strokeColor="#000"
+      />
+      <Marker coordinate={origin} title={'Origin'} />
+      <Marker coordinate={destination} title={'Destination'} />
     </MapView>
   );
 };
@@ -50,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeMap;
+export default RouteMap;
