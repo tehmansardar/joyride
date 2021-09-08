@@ -7,16 +7,19 @@ import React, {useEffect} from 'react';
 import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
-import HomeScreen from './src/screens/HomeScreen';
+// import HomeScreen from './src/screens/HomeScreen';
+// import DestinationSearch from './src/screens/DestinationSearch';
+import SearchResults from './src/screens/SearchResults';
 
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
-
   return (
     <SafeAreaView style={styles.backgroundStyle}>
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      {/* <DestinationSearch /> */}
+      <SearchResults />
     </SafeAreaView>
   );
 };
